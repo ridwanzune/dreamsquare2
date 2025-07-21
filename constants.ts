@@ -43,6 +43,38 @@ export const TOGGLEABLE_LAYERS: { [key: string]: string } = {
   'Roads': 'Roads buggy'
 };
 
+export const INTERACTIVE_PLACEHOLDER_IMAGES: { [key: string]: string[] } = {
+  // Buildings
+  'Male Staff Quarters': ['https://placehold.co/400x225/a9a9a9/ffffff/png?text=Staff+Quarters'],
+  'Terrace': ['https://placehold.co/400x225/deb887/ffffff/png?text=Terrace+View'],
+  'Grand hall': ['https://placehold.co/400x225/A67B5B/FFFFFF/png?text=Grand+Hall+View', 'https://placehold.co/400x225/cdaa7d/ffffff/png?text=Interior'],
+  'Prayer room': ['https://placehold.co/400x225/add8e6/ffffff/png?text=Prayer+Room'],
+  'Big Kitchen': ['https://placehold.co/400x225/f0e68c/ffffff/png?text=Main+Kitchen'],
+  'Garden restaurant': ['https://placehold.co/400x225/90ee90/ffffff/png?text=Garden+Restaurant'],
+  'Spice Restaurant': ['https://placehold.co/400x225/ff7f50/ffffff/png?text=Spice+Restaurant'],
+  'Duplex Villa': ['https://placehold.co/400x225/778899/ffffff/png?text=Duplex+Villa+Exterior', 'https://placehold.co/400x225/b0c4de/ffffff/png?text=Duplex+Living+Room'],
+  'Eco Cabin': ['https://placehold.co/400x225/556b2f/ffffff/png?text=Eco+Cabin'],
+  'Mud House': ['https://placehold.co/400x225/saddlebrown/ffffff/png?text=Mud+House'],
+  'Water villas': ['https://placehold.co/400x225/5B83A6/FFFFFF/png?text=Water+Villa+Exterior', 'https://placehold.co/400x225/8FB2D6/FFFFFF/png?text=Water+Villa+Interior'],
+  'Tower Building': ['https://placehold.co/400x225/d2b48c/ffffff/png?text=Tower+View'],
+  'Green Cabins': ['https://placehold.co/400x225/2e8b57/ffffff/png?text=Green+Cabins'],
+  'Dream House': ['https://placehold.co/400x225/ffc0cb/ffffff/png?text=Dream+House'],
+  'Reception': ['https://placehold.co/400x225/f5deb3/ffffff/png?text=Reception+Desk'],
+  'Billiard Room': ['https://placehold.co/400x225/006400/ffffff/png?text=Billiards'],
+  'owners cabin': ['https://placehold.co/400x225/8b4513/ffffff/png?text=Owner+Cabin'],
+  'Twin Cabin': ['https://placehold.co/400x225/4682b4/ffffff/png?text=Twin+Cabin'],
+
+  // Features
+  'Big Pools Area': ['https://placehold.co/400x225/00ced1/ffffff/png?text=Main+Pool'],
+  'Small Swimming': ['https://placehold.co/400x225/4682b4/ffffff/png?text=Small+Pool'],
+  'Boats': ['https://placehold.co/400x225/6495ed/ffffff/png?text=Boating+on+Pond'],
+  'Cricket Field': ['https://placehold.co/400x225/32cd32/ffffff/png?text=Cricket+Pitch'],
+  'Kids playground': ['https://placehold.co/400x225/ffd700/ffffff/png?text=Playground'],
+  'Amphi theatre': ['https://placehold.co/400x225/daa520/ffffff/png?text=Amphitheatre+Stage'],
+  'Football Field': ['https://placehold.co/400x225/006400/ffffff/png?text=Football+Field'],
+};
+
+
 export const CLOUDS_CONFIG = [
   { id: 1, src: 'https://res.cloudinary.com/dy80ftu9k/image/upload/v1753017621/Cloud_PNG_Clip_Art_Image-1171819204_touawb.png', x: 500, y: 200, width: 800, height: 400, opacity: 0.8, duration: 120 },
   { id: 2, src: 'https://res.cloudinary.com/dy80ftu9k/image/upload/v1753017610/Cloud-PNG-Cutout-Architecture-Photoshop_01_iucmoe.png', x: 1800, y: 800, width: 1000, height: 500, opacity: 0.9, duration: 90 },

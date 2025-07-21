@@ -8,16 +8,17 @@ import Clouds from './Clouds';
 interface InteractiveMapProps {
   layers: Layer[];
   playHoverSound: () => void;
+  hoveredLayerName: string | null;
+  setHoveredLayerName: (name: string | null) => void;
 }
 
 const MIN_SCALE = 0.2;
-const MAX_SCALE = 5;
+const MAX_SCALE = 1.2;
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(value, max));
 
-const InteractiveMap: React.FC<InteractiveMapProps> = ({ layers, playHoverSound }) => {
+const InteractiveMap: React.FC<InteractiveMapProps> = ({ layers, playHoverSound, hoveredLayerName, setHoveredLayerName }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [hoveredLayerName, setHoveredLayerName] = useState<string | null>(null);
   
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -30,7 +31,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ layers, playHoverSound 
     if (name) {
         playHoverSound();
     }
-  }, [playHoverSound]);
+  }, [playHoverSound, setHoveredLayerName]);
 
   const getClampedPosition = (pos: {x: number, y: number}, newScale: number) => {
     if (!containerRef.current) return pos;

@@ -1,16 +1,18 @@
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Layer } from './types';
-import { LAYER_DATA, IMAGE_URLS, BACKGROUND_COLOR, HOVER_SOUND_URL, BUILDING_LAYER_NAMES, OTHER_FEATURES_LAYER_NAMES, CLOUDS_CONFIG } from './constants';
+import { LAYER_DATA, IMAGE_URLS, BACKGROUND_COLOR, HOVER_SOUND_URL, BUILDING_LAYER_NAMES, OTHER_FEATURES_LAYER_NAMES, CLOUDS_CONFIG, INTERACTIVE_PLACEHOLDER_IMAGES } from './constants';
 import LoadingScreen from './components/LoadingScreen';
 import InteractiveMap from './components/InteractiveMap';
 import ControlPanel from './components/ControlPanel';
 import SoundControl from './components/SoundControl';
+import InfoPanel from './components/InfoPanel';
 
 const App: React.FC = () => {
   const [assetsLoaded, setAssetsLoaded] = useState<boolean>(false);
   const [loadingProgress, setLoadingProgress] = useState<number>(0);
   const [hiddenLayers, setHiddenLayers] = useState<Set<string>>(new Set());
+  const [hoveredLayerName, setHoveredLayerName] = useState<string | null>(null);
 
   // Web Audio API refs for robust sound handling
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -175,6 +177,10 @@ const App: React.FC = () => {
     <div className="w-screen h-screen overflow-hidden relative flex flex-col md:block" style={{ backgroundColor: BACKGROUND_COLOR }}>
       {assetsLoaded && (
         <>
+          <InfoPanel
+            layerName={hoveredLayerName}
+            imageUrls={hoveredLayerName ? INTERACTIVE_PLACEHOLDER_IMAGES[hoveredLayerName] : undefined}
+          />
           <SoundControl isMuted={isMuted} onToggle={handleToggleMute} />
           
           {/* Desktop Logo */}
@@ -195,7 +201,7 @@ const App: React.FC = () => {
       )}
 
       <div className={`w-full transition-opacity duration-300 ${assetsLoaded ? 'opacity-100' : 'opacity-0'} flex-grow h-0 md:h-full`}>
-        {assetsLoaded && <InteractiveMap layers={layers} playHoverSound={playHoverSound} />}
+        {assetsLoaded && <InteractiveMap layers={layers} playHoverSound={playHoverSound} hoveredLayerName={hoveredLayerName} setHoveredLayerName={setHoveredLayerName} />}
       </div>
 
       {assetsLoaded && <ControlPanel hiddenLayers={hiddenLayers} onToggle={handleToggleLayer} />}
